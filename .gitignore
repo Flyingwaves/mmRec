@@ -224,3 +224,8 @@ data/**/*.csv
 # macOS
 .DS_Store
 **/.DS_Store
+
+# Other files
+checkpoints/
+runs/
+logs/
