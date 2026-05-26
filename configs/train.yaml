@@ -1,1 +1,23 @@
 # Training hyperparameters
+# These are dataset-agnostic and model-agnostic defaults.
+# Override via command line: --set train.lr_dense=1e-4
+
+train:
+  batch_size: 32
+  num_epochs: 10
+  lr_dense: 1e-3       # learning rate for dense params (attention, FFN, heads)
+  lr_emb: 1e-2         # learning rate for embedding tables (sparse, higher lr)
+  val_ratio: 0.1       # fraction of data used for validation
+  seed: 42
+  grad_clip: 5.0       # max gradient norm for clipping
+  log_interval: 10     # log loss every N batches
+  num_workers: 0       # DataLoader workers, 0 = main process
+
+checkpoint:
+  dir: checkpoints     # root dir, subdir auto-named as {dataset}_{model}
+  save_best: true      # save when val AUC improves
+  save_last: true      # always save latest epoch
+
+logging:
+  use_tensorboard: true
+  tensorboard_dir: runs

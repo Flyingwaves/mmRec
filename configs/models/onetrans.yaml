@@ -1,0 +1,19 @@
+# OneTrans model hyperparameters
+# Override via command line: --set model.latent_dim=256
+
+model:
+  name: onetrans
+  latent_dim: 128
+  num_heads: 4
+  num_layers: 4
+  ffn_ratio: 4.0
+  dropout: 0.1
+
+  # Tokenizer
+  ns_tokenizer: auto_split   # auto_split or group_wise
+  use_pos_emb: true          # whether to use position embedding in SeqTokenizer
+
+  # Pyramid schedule
+  # null = auto compute via make_pyramid, or specify manually as list
+  # e.g. pyramid_query_counts: [96, 64, 32, 3]
+  pyramid_query_counts: null
