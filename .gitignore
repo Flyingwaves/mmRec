@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Data files
+data/**/*.parquet
+data/**/*.csv
+
+# macOS
+.DS_Store
+**/.DS_Store
