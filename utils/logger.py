@@ -1,5 +1,24 @@
 """
-Logger for mmRec.
+Logger for mmRec training.
+ 
+Responsibilities:
+    - Console logging with timestamp (via Python logging)
+    - TensorBoard logging (optional, controlled by cfg.logging.use_tensorboard)
+    - Unified interface: logger.log_scalar(), logger.log_epoch()
+    - Auto-creates log dir; gracefully degrades if tensorboard not installed
+ 
+Usage (in trainer/trainer.py):
+    from utils.logger import Logger
+    logger = Logger(cfg, run_name="taac2026_onetrans")
+ 
+    # inside train loop
+    logger.log_scalar("train/loss", loss, step=global_step)
+    logger.log_scalar("train/lr",   lr,   step=global_step)
+ 
+    # after each epoch
+    logger.log_epoch(epoch, train_loss=0.312, val_auc=0.734)
+ 
+    logger.close()
 """
 
 import os
